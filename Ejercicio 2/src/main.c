@@ -1,5 +1,5 @@
 /*Ejercicio 2
-DiseÒe e implemente un Firmware sobre la placa STM32F4 que haga parpadear un led con un
+Dise√±e e implemente un Firmware sobre la placa STM32F4 que haga parpadear un led con un
 periodo de 100 ms. El sistema debe permitir seleccionar uno de entre 4 de los leds disponibles
 empleando un pulsador.
 Pulsador: Selecciona LED BLUE
@@ -22,17 +22,17 @@ void main()
 
       while (1)
         {
-    	  //Mientras el pulsador no estÈ presionado, sÛlo estar· prendido el led 12
+    	  //Mientras el pulsador no est√© presionado, s√≥lo estar√° prendido el led 12
+    	  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+    	  
     	  if (!HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0))
-    	  {
-    		  HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+    	  {	  
     		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, RESET);
     	  }
-    	  //Cuando el pulsador se mantenga presionado, sÛlo estar· prendido el led 15
+    	  //Cuando el pulsador se mantenga presionado, tambien estar√° prendido el led 15
     	  else
     	  {
     		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, SET);
-    		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, RESET);
     	  }
     	  HAL_Delay(100);
         }
